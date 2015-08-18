@@ -1,0 +1,41 @@
+#!/usr/bin/env python
+# vim: set filetype=python
+
+import os
+import sys
+import tempfile
+from subprocess import call
+import argparse
+
+import git
+from milestonemaker.milestonemaker import MilestoneMaker
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(prog='milestonemaker')
+    subparsers = parser.add_subparsers()
+
+    parser_create = subparsers.add_parser("create", help="Creates all milestones")
+    parser_create.set_defaults(command="create")
+    parser_create.add_argument("--api-key")
+    parser_create.add_argument("--organization")
+    parser_create.add_argument("--repository")
+    parser_create.add_argument("--start-date")
+
+    parser_delete = subparsers.add_parser("delete", help="Deletes all milestones with 'week' in the name and no issues assigned to them.")
+    parser_delete.set_defaults(command="delete")
+    parser_delete.add_argument("--api-key")
+    parser_delete.add_argument("--organization")
+    parser_delete.add_argument("--repository")
+    parser_delete.add_argument("--start-date")
+
+    args = parser.parse_args()
+    if args.api_key is None or args.organization is None or args.repository is None:
+        parser.print_help()
+    else:
+        milestone_maker = MilestoneMaker(args.api_key, args.organization, args.repository, args.start_date)
+        if args.command == "create":
+            milestone_maker.create()
+        else:
+            milestone_maker.delete()
+
