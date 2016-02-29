@@ -58,7 +58,7 @@ class MilestoneMaker(object):
             }
 
             if due_date is not None:
-                milestone_data['due_on'] = due_date.isoformat()
+                milestone_data['due_on'] = datetime.datetime.fromordinal(due_date.toordinal()).isoformat() + "Z"
 
             response = requests.post(self.milestone_url, data=json.dumps(milestone_data), headers=self.HEADERS)
             if response.status_code == 201:
