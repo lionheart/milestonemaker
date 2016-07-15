@@ -1,15 +1,7 @@
-import sys
-import optparse
 import logging
-import os
 import requests
-import pickle
 import datetime
 import json
-import pprint
-
-from redis import StrictRedis as Redis
-import httplib
 
 from dateutil import parser as date_parser
 

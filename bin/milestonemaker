@@ -1,15 +1,9 @@
 #!/usr/bin/env python
 # vim: set filetype=python
 
-import os
-import sys
-import tempfile
-from subprocess import call
 import argparse
 
-import git
 from milestonemaker.milestonemaker import MilestoneMaker
-
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(prog='milestonemaker')
