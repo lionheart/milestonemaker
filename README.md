@@ -1,13 +1,14 @@
-milestonemaker
-==============
+# milestonemaker
 
-What Does This Do
------------------
+![Version](https://img.shields.io/pypi/v/git-bigstore.svg?style=flat)
+![License](https://img.shields.io/pypi/l/git-bigstore.svg?style=flat)
+![Versions](https://img.shields.io/pypi/pyversions/git-bigstore.svg?style=flat)
+
+## What Does This Do
 
 This simple utility creates weekly milestones in GitHub issues. See https://github.com/lionheart/milestonemaker/milestones for an example.
 
-How Do You Use It
------------------
+## How Do You Use It
 
 ```
 pip install milestonemaker

@@ -28,10 +28,29 @@ package_name = "milestonemaker"
 metadata_filename = "{}/metadata.py".format(package_name)
 metadata = runpy.run_path(metadata_filename)
 
+# http://pypi.python.org/pypi?:action=list_classifiers
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Natural Language :: English",
+    "Operating System :: Unix",
+    "Operating System :: MacOS :: MacOS X",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 2.7",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Topic :: Software Development :: Bug Tracking",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Utilities",
+]
+
 setup(
     name=package_name,
     version=metadata['__version__'],
     license=metadata['__license__'],
+    classifiers=classifiers,
     description="Create milestones in GitHub automatically",
     author=metadata['__author__'],
     author_email=metadata['__email__'],
