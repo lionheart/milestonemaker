@@ -12,6 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from __future__ import print_function
+
 import logging
 import requests
 import datetime
@@ -51,11 +53,11 @@ class MilestoneMaker(object):
             if milestone['open_issues'] == 0 and milestone['closed_issues'] == 0 and "week" in milestone['title'].lower():
                 response = requests.delete(milestone['url'], headers=self.HEADERS)
                 if response.status_code == 204:
-                    print "Deleting", milestone['title']
+                    print("Deleting", milestone['title'])
                 else:
-                    print "Error"
+                    print("Error")
             else:
-                print "Skipping", milestone['title']
+                print("Skipping", milestone['title'])
 
     def create(self):
         def create_milestone(title, due_date=None):
@@ -68,9 +70,9 @@ class MilestoneMaker(object):
 
             response = requests.post(self.milestone_url, data=json.dumps(milestone_data), headers=self.HEADERS)
             if response.status_code == 201:
-                print "Created", title
+                print("Created", title)
             else:
-                print "Error creating", title
+                print("Error creating", title)
 
         day = datetime.date(self.start_date.year, 1, 1)
         groupings = []
