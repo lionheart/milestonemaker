@@ -23,21 +23,20 @@ try:
 except ImportError:
     from distutils.core import setup
 
-metadata = runpy.run_path("statictastic/metadata.py")
+package_name = "milestonemaker"
+
+metadata_filename = "{}/metadata.py".format(package_name)
+metadata = runpy.run_path(metadata_filename)
 
 setup(
-    name='milestonemaker',
+    name=package_name,
     version=metadata['__version__'],
     license=metadata['__license__'],
     description="Create milestones in GitHub automatically",
     author=metadata['__author__'],
     author_email=metadata['__email__'],
     url="http://lionheartsw.com/",
-    packages=[
-        'milestonemaker',
-    ],
-    scripts=[
-        'bin/milestonemaker',
-    ],
+    packages=[package_name],
+    scripts=['bin/milestonemaker'],
 )
 
